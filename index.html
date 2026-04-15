@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Imelda, Zamboanga Sibugay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #0d1f2d;
+      --navy-mid:   #1a3a52;
+      --blue:       #1e6091;
+      --teal:       #2a9d8f;
+      --teal-light: #4cc9b8;
+      --gold:       #e9c46a;
+      --gold-dark:  #c9a227;
+      --cream:      #f8f4ec;
+      --white:      #ffffff;
+      --gray-light: #f0ede6;
+      --text:       #0d1f2d;
+      --text-mid:   #2c4a5e;
+      --text-light: #6b8fa6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--navy); height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo {
+      width: 40px; height: 40px; background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.1rem; color: var(--navy); flex-shrink: 0;
+    }
+    .nav-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.15rem; color: var(--white); line-height: 1.1; }
+    .nav-name small { display: block; font-family: 'Outfit', sans-serif; font-size: 0.6rem; font-weight: 400; color: var(--teal-light); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-links { list-style: none; display: flex; gap: 0.15rem; }
+    .nav-links a { color: rgba(255,255,255,0.78); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0.9rem; border-radius: 3px; transition: all 0.2s; }
+    .nav-links a:hover { color: var(--gold); background: rgba(255,255,255,0.07); }
+
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu { display: none; position: fixed; top: 66px; left: 0; right: 0; background: var(--navy-mid); z-index: 999; flex-direction: column; padding: 0.5rem 0 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); animation: slideDown 0.25s ease; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,0.88); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.85rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
+    .mobile-menu a:hover { color: var(--gold); background: rgba(255,255,255,0.05); padding-left: 2.5rem; }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-8px);} to {opacity:1; transform:translateY(0);} }
+
+    /* ---- HERO ---- */
+    #home {
+      min-height: 100vh;
+      /* =====================================================================
+         💡 TO ADD YOUR HERO PHOTO:
+         Replace  url('YOUR_HERO_IMAGE_URL_HERE')
+         with     url('your-photo-filename.jpg')
+         or any image link.
+      ===================================================================== */
+      background:
+        linear-gradient(160deg, rgba(13,31,45,0.75) 0%, rgba(26,58,82,0.68) 60%, rgba(42,157,143,0.3) 100%),
+        url('YOUR_HERO_IMAGE_URL_HERE') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 1.5rem 4rem; position: relative;
+    }
+    #home::after { content:''; position:absolute; bottom:0; left:0; right:0; height:80px; background:var(--cream); clip-path:polygon(0 100%,100% 0,100% 100%); }
+
+    .hero-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(233,196,106,0.18); border:1px solid rgba(233,196,106,0.45); color:var(--gold); font-size:0.68rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; padding:0.4rem 1.1rem; border-radius:50px; margin-bottom:1.8rem; animation:fadeUp 0.7s ease both; }
+    .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,9vw,7.5rem); font-weight:700; color:var(--white); line-height:0.95; margin-bottom:0.6rem; animation:fadeUp 0.7s 0.1s ease both; }
+    .hero-title em { font-style:italic; color:var(--teal-light); }
+    .hero-province { font-family:'Cormorant Garamond',serif; font-size:clamp(1rem,2.5vw,1.5rem); color:rgba(255,255,255,0.65); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:2rem; animation:fadeUp 0.7s 0.2s ease both; }
+    .hero-tagline { max-width:520px; font-size:1.05rem; font-weight:300; color:rgba(255,255,255,0.82); line-height:1.75; margin-bottom:2.5rem; animation:fadeUp 0.7s 0.3s ease both; }
+    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; animation:fadeUp 0.7s 0.4s ease both; }
+    .btn-gold { background:var(--gold); color:var(--navy); font-weight:600; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 2.2rem; border-radius:3px; transition:all 0.2s; }
+    .btn-gold:hover { background:var(--gold-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+    .btn-ghost { border:1.5px solid rgba(255,255,255,0.55); color:var(--white); font-weight:500; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.9rem 2.2rem; border-radius:3px; transition:all 0.2s; }
+    .btn-ghost:hover { border-color:var(--white); background:rgba(255,255,255,0.1); }
+
+    .hero-stats { position:absolute; bottom:90px; left:50%; transform:translateX(-50%); display:flex; gap:3rem; animation:fadeUp 0.7s 0.5s ease both; }
+    .stat-item { text-align:center; }
+    .stat-num  { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; color:var(--gold); line-height:1; }
+    .stat-label{ font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:3px; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+
+    /* ---- SHARED ---- */
+    section { padding: 5.5rem 1.5rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .sec-eyebrow { font-size:0.68rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:0.75rem; }
+    .sec-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:700; color:var(--navy); line-height:1.15; margin-bottom:1.1rem; }
+    .sec-title em { font-style:italic; color:var(--blue); }
+    .sec-body { font-size:1rem; font-weight:300; color:var(--text-mid); line-height:1.85; max-width:580px; }
+    .divider { width:52px; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold)); border-radius:2px; margin:1.2rem 0 1.6rem; }
+
+    /* ---- ABOUT ---- */
+    #about { background: var(--white); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .about-img-wrap { position:relative; }
+    .about-img-wrap img { width:100%; height:440px; object-fit:cover; border-radius:4px; }
+    .about-img-placeholder { width:100%; height:440px; background:linear-gradient(135deg,var(--navy-mid),var(--blue)); border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; text-align:center; gap:0.5rem; }
+    .about-badge { position:absolute; bottom:-1.5rem; right:-1.5rem; background:var(--gold); color:var(--navy); padding:1.3rem 1.6rem; border-radius:4px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.15); }
+    .about-badge-num { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:700; line-height:1; }
+    .about-badge-text{ font-size:0.65rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; margin-top:3px; }
+    .about-facts { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+    .fact-card { background:var(--gray-light); padding:1rem 1.2rem; border-radius:4px; border-left:3px solid var(--teal); }
+    .fact-label { font-size:0.65rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:4px; }
+    .fact-value { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:600; color:var(--navy); }
+
+    /* ---- TOURISM ---- */
+    #tourism { background: var(--cream); }
+    .tourism-intro { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end; margin-bottom:3.5rem; }
+    .cards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .attraction-card { border-radius:6px; overflow:hidden; background:var(--white); box-shadow:0 4px 20px rgba(0,0,0,0.07); transition:transform 0.3s,box-shadow 0.3s; }
+    .attraction-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(0,0,0,0.13); }
+    .card-img { height:200px; background:linear-gradient(135deg,var(--navy-mid),var(--teal)); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.3); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; position:relative; overflow:hidden; }
+    .card-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+    .card-cat { position:absolute; top:0.75rem; left:0.75rem; background:var(--gold); color:var(--navy); font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; border-radius:2px; z-index:1; }
+    .card-body { padding:1.2rem; }
+    .card-title { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; }
+    .card-desc  { font-size:0.85rem; font-weight:300; color:var(--text-mid); line-height:1.6; }
+
+    /* ---- CULTURE ---- */
+    #culture { background:var(--navy); color:var(--white); position:relative; overflow:hidden; }
+    #culture::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(42,157,143,0.15) 0%,transparent 70%); pointer-events:none; }
+    #culture .sec-eyebrow{ color:var(--teal-light); }
+    #culture .sec-title  { color:var(--white); }
+    #culture .sec-title em{ color:var(--teal-light); }
+    #culture .sec-body   { color:rgba(255,255,255,0.65); max-width:100%; }
+    .culture-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .culture-list { list-style:none; display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem; }
+    .culture-list li { display:flex; align-items:flex-start; gap:1rem; }
+    .culture-icon { width:36px; height:36px; background:rgba(42,157,143,0.2); border:1px solid rgba(42,157,143,0.4); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.9rem; }
+    .culture-item-title { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--white); margin-bottom:3px; }
+    .culture-item-desc  { font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.6; }
+    .culture-img-stack  { position:relative; height:420px; }
+    .cimg { position:absolute; border-radius:4px; box-shadow:0 12px 40px rgba(0,0,0,0.4); overflow:hidden; }
+    .cimg-1 { width:65%; height:280px; top:0; left:0; background:linear-gradient(135deg,#1a3a52,#2a9d8f); }
+    .cimg-2 { width:55%; height:220px; bottom:0; right:0; background:linear-gradient(135deg,#0d1f2d,#1e6091); }
+    .cimg img { width:100%; height:100%; object-fit:cover; }
+    .cimg-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.25); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:1rem; }
+
+    /* ---- ECONOMY ---- */
+    #economy { background: var(--white); }
+    .economy-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
+    .econ-card { background:var(--cream); border-radius:6px; padding:2rem 1.4rem; text-align:center; border-bottom:3px solid transparent; transition:all 0.3s; }
+    .econ-card:hover { border-color:var(--teal); transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+    .econ-icon  { width:52px; height:52px; background:linear-gradient(135deg,var(--teal),var(--blue)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin:0 auto 1rem; }
+    .econ-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.5rem; }
+    .econ-desc  { font-size:0.8rem; color:var(--text-mid); line-height:1.6; font-weight:300; }
+
+    /* ---- GOVERNMENT ---- */
+    #government { background: var(--gray-light); }
+    .gov-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .officials-list { display:flex; flex-direction:column; gap:1rem; margin-top:2rem; }
+    .official-card { display:flex; align-items:center; gap:1rem; background:var(--white); padding:1rem 1.2rem; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+    .official-avatar { width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--navy-mid),var(--blue)); flex-shrink:0; overflow:hidden; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.35); font-size:0.6rem; letter-spacing:0.05em; text-align:center; }
+    .official-avatar img { width:100%; height:100%; object-fit:cover; }
+    .official-name { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:700; color:var(--navy); }
+    .official-pos  { font-size:0.72rem; font-weight:500; color:var(--teal); text-transform:uppercase; letter-spacing:0.08em; }
+    .contact-info  { background:var(--white); border-radius:6px; padding:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); margin-top:2rem; }
+    .contact-info h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--navy); margin-bottom:1.2rem; }
+    .contact-row { display:flex; align-items:center; gap:0.8rem; padding:0.75rem 0; border-bottom:1px solid var(--gray-light); font-size:0.9rem; color:var(--text-mid); }
+    .contact-row:last-child { border-bottom:none; }
+    .contact-row span:first-child { font-size:1rem; width:24px; text-align:center; }
+
+    /* ---- GALLERY ---- */
+    #gallery { background: var(--cream); }
+    .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,200px); gap:0.75rem; margin-top:3rem; }
+    .gallery-item { border-radius:4px; overflow:hidden; background:linear-gradient(135deg,var(--navy-mid),var(--teal)); position:relative; cursor:pointer; }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition:transform 0.4s; }
+    .gallery-item:hover img { transform:scale(1.05); }
+    .gallery-item.wide { grid-column:span 2; }
+    .gallery-item.tall { grid-row:span 2; }
+    .gallery-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.25); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding:1rem; }
+
+    /* ---- CONTACT ---- */
+    #contact { background:var(--navy); color:var(--white); text-align:center; }
+    #contact .sec-eyebrow{ color:var(--teal-light); }
+    .contact-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
+    .contact-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:2rem 1.5rem; transition:background 0.2s; }
+    .contact-card:hover { background:rgba(255,255,255,0.1); }
+    .contact-card-icon  { font-size:1.8rem; margin-bottom:1rem; }
+    .contact-card-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
+    .contact-card-val   { font-size:0.88rem; color:rgba(255,255,255,0.55); line-height:1.6; }
+
+    /* ---- FOOTER ---- */
+    footer { background:#070f17; color:rgba(255,255,255,0.45); text-align:center; padding:2rem 1.5rem; font-size:0.78rem; line-height:1.8; }
+    footer strong { color:rgba(255,255,255,0.7); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width:900px) {
+      .about-grid,.tourism-intro,.culture-grid,.gov-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .about-badge { right:0; }
+      .cards-grid   { grid-template-columns:1fr 1fr; }
+      .economy-grid { grid-template-columns:1fr 1fr; }
+      .contact-cards{ grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
+      .gallery-item.wide,.gallery-item.tall { grid-column:span 1; grid-row:span 1; }
+      .culture-img-stack { height:280px; }
+      .hero-stats { gap:1.5rem; bottom:95px; }
+    }
+    @media (max-width:640px) {
+      nav { padding:0 1.2rem; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .cards-grid  { grid-template-columns:1fr; }
+      .economy-grid{ grid-template-columns:1fr 1fr; }
+      .about-facts { grid-template-columns:1fr; }
+      .gallery-grid{ grid-template-columns:1fr 1fr; }
+      .hero-stats  { flex-wrap:wrap; gap:1rem 2rem; bottom:100px; }
+      section { padding:4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================
+       NAVIGATION BAR  (7 menu items — collapsible on mobile)
+  ================================================ -->
+  <nav>
+    <a class="nav-brand" href="#home">
+      <div class="nav-logo">IZ</div>
+      <div class="nav-name">
+        Imelda
+        <small>Zamboanga Sibugay</small>
+      </div>
+    </a>
+
+    <!-- Desktop menu -->
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#tourism">Tourism</a></li>
+      <li><a href="#culture">Culture</a></li>
+      <li><a href="#economy">Economy</a></li>
+      <li><a href="#government">Government</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Hamburger button (mobile only) -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile collapsible menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home"       onclick="closeMenu()">Home</a>
+    <a href="#about"      onclick="closeMenu()">About</a>
+    <a href="#tourism"    onclick="closeMenu()">Tourism</a>
+    <a href="#culture"    onclick="closeMenu()">Culture</a>
+    <a href="#economy"    onclick="closeMenu()">Economy</a>
+    <a href="#government" onclick="closeMenu()">Government</a>
+    <a href="#contact"    onclick="closeMenu()">Contact</a>
+  </div>
+
+
+  <!-- ================================================
+       SECTION 1 — HOME / HERO
+  ================================================ -->
+  <section id="home">
+    <!-- 💡 HERO BACKGROUND PHOTO:
+         In the CSS above, find  url('YOUR_HERO_IMAGE_URL_HERE')
+         and replace it with your actual banner photo URL or filename.
+    -->
+
+    <span class="hero-tag">✦ Municipality of Imelda</span>
+
+    <h1 class="hero-title">
+      Imelda<br><em>Zamboanga Sibugay</em>
+    </h1>
+
+    <p class="hero-province">Province of Zamboanga Sibugay · Philippines</p>
+
+    <!-- 💡 EDIT: Replace this text with your tagline or short intro -->
+    <p class="hero-tagline">Welcome to Imelda, Zamboanga Sibugay—a peaceful community in the heart of the region</p>
+
+    <div class="hero-actions">
+      <a href="#tourism" class="btn-gold">Explore the Town</a>
+      <a href="#about"   class="btn-ghost">Learn More</a>
+    </div>
+
+    <!-- 💡 EDIT: Replace [####] with actual figures -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">29,652 </div>
+        <div class="stat-label">Population</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">18</div>
+        <div class="stat-label">Barangays</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">255.51km²</div>
+        <div class="stat-label">Land Area (ha)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">November 11, 1977</div>
+        <div class="stat-label">Year Established</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 2 — ABOUT
+  ================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- LEFT: Photo -->
+        <div class="about-img-wrap">
+          <!--
+            💡 REPLACE THIS PLACEHOLDER WITH YOUR PHOTO:
+            Delete the <div class="about-img-placeholder">...</div>
+            and put instead:
+            <img src="your-photo.jpg" alt="Imelda, Zamboanga Sibugay">
+          -->
+          <div class="about-img-placeholder">
+            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+            <span>Insert Photo Here</span>
+          </div>
+
+          <!-- 💡 EDIT: Replace [Year] and label with e.g. "1957 / Founded" -->
+          <div class="about-badge">
+            <div class="about-badge-num">[Year]</div>
+            <div class="about-badge-text">Founded</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Text -->
+        <div>
+          <p class="sec-eyebrow">About the Municipality</p>
+          <h2 class="sec-title">Welcome to <em>Imelda</em></h2>
+          <div class="divider"></div>
+
+          <!-- 💡 EDIT: Replace with your description of Imelda -->
+          <p class="sec-body">
+            [Write 2–3 paragraphs about Imelda here — its history, location, geography, and what makes the municipality unique. You can include when it was founded, what province it belongs to, and a general overview of the community.]
+          </p>
+
+          <!-- 💡 EDIT: Fill in each fact value -->
+          <div class="about-facts">
+            <div class="fact-card">
+              <div class="fact-label">Classification</div>
+              <div class="fact-value">[e.g. 5th Class Municipality]</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-label">District</div>
+              <div class="fact-value">[Congressional District]</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-label">Total Barangays</div>
+              <div class="fact-value">[Number of Barangays]</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-label">Language / Dialect</div>
+              <div class="fact-value">[e.g. Cebuano, Chavacano]</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 3 — TOURISM
+  ================================================ -->
+  <section id="tourism">
+    <div class="container">
+      <div class="tourism-intro">
+        <div>
+          <p class="sec-eyebrow">Explore &amp; Discover</p>
+          <h2 class="sec-title">Tourist <em>Attractions</em></h2>
+          <div class="divider"></div>
+        </div>
+        <!-- 💡 EDIT: Replace with your tourism overview text -->
+        <p class="sec-body">
+          [Describe the tourism highlights of Imelda here. What kinds of attractions does the municipality offer — natural, cultural, historical, recreational?]
+        </p>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- CARD 1 -->
+        <!-- 💡 EDIT: Add <img src="photo.jpg"> inside .card-img, edit category tag, title, and description -->
+        <div class="attraction-card">
+          <div class="card-img">
+            <span class="card-cat">[Category]</span>
+            <!-- Add <img src="your-photo.jpg" alt="..."> here -->
+            <span style="position:relative;z-index:1;">Insert Photo</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">[Attraction Name 1]</div>
+            <p class="card-desc">[Brief description of this tourist spot and what visitors can experience.]</p>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="attraction-card">
+          <div class="card-img">
+            <span class="card-cat">[Category]</span>
+            <span style="position:relative;z-index:1;">Insert Photo</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">[Attraction Name 2]</div>
+            <p class="card-desc">[Brief description of this tourist spot and what visitors can experience.]</p>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="attraction-card">
+          <div class="card-img">
+            <span class="card-cat">[Category]</span>
+            <span style="position:relative;z-index:1;">Insert Photo</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">[Attraction Name 3]</div>
+            <p class="card-desc">[Brief description of this tourist spot and what visitors can experience.]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 4 — CULTURE
+  ================================================ -->
+  <section id="culture">
+    <div class="container">
+      <div class="culture-grid">
+
+        <!-- LEFT: Text + list -->
+        <div>
+          <p class="sec-eyebrow">Heritage &amp; Tradition</p>
+          <h2 class="sec-title">Culture &amp; <em>Traditions</em></h2>
+          <div class="divider"></div>
+          <!-- 💡 EDIT: Replace with cultural overview -->
+          <p class="sec-body">
+            [Write about the cultural heritage of Imelda — local traditions, festivals, the people's way of life, and what makes the community's culture distinctive.]
+          </p>
+
+          <!-- 💡 EDIT: Replace each culture item's emoji, title, and description -->
+          <ul class="culture-list">
+            <li>
+              <div class="culture-icon">🎉</div>
+              <div>
+                <div class="culture-item-title">[Festival or Celebration Name]</div>
+                <div class="culture-item-desc">[Brief description of this local festival or cultural event.]</div>
+              </div>
+            </li>
+            <li>
+              <div class="culture-icon">🍽️</div>
+              <div>
+                <div class="culture-item-title">[Local Food / Cuisine]</div>
+                <div class="culture-item-desc">[Describe local delicacies or food traditions unique to Imelda.]</div>
+              </div>
+            </li>
+            <li>
+              <div class="culture-icon">🎭</div>
+              <div>
+                <div class="culture-item-title">[Arts, Crafts, or Music]</div>
+                <div class="culture-item-desc">[Describe local arts, crafts, music, or performing arts traditions.]</div>
+              </div>
+            </li>
+            <li>
+              <div class="culture-icon">🕌</div>
+              <div>
+                <div class="culture-item-title">[Cultural Practice or Belief]</div>
+                <div class="culture-item-desc">[Describe any notable customs, practices, or community values.]</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT: Photo stack -->
+        <!-- 💡 EDIT: Replace each .cimg div with:
+             <div class="cimg cimg-1"><img src="photo1.jpg" alt="..."></div>
+        -->
+        <div class="culture-img-stack">
+          <div class="cimg cimg-1">
+            <div class="cimg-placeholder">Insert Culture Photo 1</div>
+          </div>
+          <div class="cimg cimg-2">
+            <div class="cimg-placeholder">Insert Culture Photo 2</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 5 — ECONOMY
+  ================================================ -->
+  <section id="economy">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:0.5rem;">
+        <p class="sec-eyebrow">Livelihood &amp; Industry</p>
+        <h2 class="sec-title">Local <em>Economy</em></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <!-- 💡 EDIT: Replace with economy overview -->
+        <p class="sec-body" style="margin:0 auto; text-align:center;">
+          [Describe the economic activities that sustain the community of Imelda — what are the major sources of livelihood and income?]
+        </p>
+      </div>
+
+      <!-- 💡 EDIT: Replace each card's emoji icon, title, and description -->
+      <div class="economy-grid">
+        <div class="econ-card">
+          <div class="econ-icon">🌾</div>
+          <div class="econ-title">[Industry / Livelihood 1]</div>
+          <p class="econ-desc">[Short description of this economic activity.]</p>
+        </div>
+        <div class="econ-card">
+          <div class="econ-icon">🐟</div>
+          <div class="econ-title">[Industry / Livelihood 2]</div>
+          <p class="econ-desc">[Short description of this economic activity.]</p>
+        </div>
+        <div class="econ-card">
+          <div class="econ-icon">🌿</div>
+          <div class="econ-title">[Industry / Livelihood 3]</div>
+          <p class="econ-desc">[Short description of this economic activity.]</p>
+        </div>
+        <div class="econ-card">
+          <div class="econ-icon">🏪</div>
+          <div class="econ-title">[Industry / Livelihood 4]</div>
+          <p class="econ-desc">[Short description of this economic activity.]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 6 — GOVERNMENT
+  ================================================ -->
+  <section id="government">
+    <div class="container">
+      <div class="gov-grid">
+
+        <!-- LEFT: Officials -->
+        <div>
+          <p class="sec-eyebrow">Local Government Unit</p>
+          <h2 class="sec-title">Municipal <em>Officials</em></h2>
+          <div class="divider"></div>
+          <!-- 💡 EDIT: Replace with LGU description -->
+          <p class="sec-body">
+            [Write about the Local Government Unit of Imelda — its mission, programs, and commitment to public service.]
+          </p>
+
+          <!-- 💡 EDIT: Replace names and positions. Add more .official-card blocks to add more officials. -->
+          <div class="officials-list">
+
+            <div class="official-card">
+              <!--
+                💡 REPLACE avatar placeholder with:
+                <div class="official-avatar"><img src="mayor-photo.jpg" alt="Mayor"></div>
+              -->
+              <div class="official-avatar">Photo</div>
+              <div>
+                <div class="official-name">[Mayor's Full Name]</div>
+                <div class="official-pos">Municipal Mayor</div>
+              </div>
+            </div>
+
+            <div class="official-card">
+              <div class="official-avatar">Photo</div>
+              <div>
+                <div class="official-name">[Vice Mayor's Full Name]</div>
+                <div class="official-pos">Municipal Vice Mayor</div>
+              </div>
+            </div>
+
+            <div class="official-card">
+              <div class="official-avatar">Photo</div>
+              <div>
+                <div class="official-name">[Councilor Full Name]</div>
+                <div class="official-pos">Councilor</div>
+              </div>
+            </div>
+
+            <div class="official-card">
+              <div class="official-avatar">Photo</div>
+              <div>
+                <div class="official-name">[Councilor Full Name]</div>
+                <div class="official-pos">Councilor</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact info -->
+        <div>
+          <p class="sec-eyebrow">Reach the LGU</p>
+          <h2 class="sec-title">Municipal <em>Hall</em></h2>
+          <div class="divider"></div>
+
+          <!-- 💡 EDIT: Replace all contact info below -->
+          <div class="contact-info">
+            <h3>Municipal Government of Imelda</h3>
+            <div class="contact-row">
+              <span>📍</span>
+              <span>[Complete address of the Municipal Hall, Imelda, Zamboanga Sibugay]</span>
+            </div>
+            <div class="contact-row">
+              <span>📞</span>
+              <span>[Telephone or Mobile Number]</span>
+            </div>
+            <div class="contact-row">
+              <span>📧</span>
+              <span>[Official Email Address]</span>
+            </div>
+            <div class="contact-row">
+              <span>🌐</span>
+              <span>[Official Website or Facebook Page URL]</span>
+            </div>
+            <div class="contact-row">
+              <span>🕐</span>
+              <span>[Office Hours, e.g. Monday–Friday, 8:00 AM – 5:00 PM]</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       GALLERY SECTION (bonus — between Government & Contact)
+  ================================================ -->
+  <section id="gallery">
+    <div class="container">
+      <div style="text-align:center;">
+        <p class="sec-eyebrow">Photo Gallery</p>
+        <h2 class="sec-title">Scenes of <em>Imelda</em></h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+      </div>
+
+      <!--
+        💡 HOW TO ADD PHOTOS TO THE GALLERY:
+        Inside each .gallery-item div, add:
+        <img src="your-photo.jpg" alt="caption">
+        The first item (.wide.tall) is the large featured photo.
+        The .wide item spans 2 columns. The .tall item spans 2 rows.
+      -->
+      <div class="gallery-grid">
+        <div class="gallery-item wide tall">
+          <div class="gallery-placeholder">Insert Main Featured Photo<br>(Wide + Tall)</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">Insert Photo</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">Insert Photo</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">Insert Photo</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">Insert Photo</div>
+        </div>
+        <div class="gallery-item wide">
+          <div class="gallery-placeholder">Insert Wide Photo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       SECTION 7 — CONTACT
+  ================================================ -->
+  <section id="contact">
+    <div class="container">
+      <p class="sec-eyebrow">Get in Touch</p>
+      <h2 class="sec-title" style="color:var(--white);">
+        Contact <em style="color:var(--teal-light);">Us</em>
+      </h2>
+      <div class="divider" style="margin:1rem auto;"></div>
+
+      <!-- 💡 EDIT: Replace contact values in each card -->
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div class="contact-card-title">Our Location</div>
+          <div class="contact-card-val">
+            [Municipal Hall Address]<br>
+            Imelda, Zamboanga Sibugay
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div class="contact-card-title">Phone</div>
+          <div class="contact-card-val">
+            [Phone Number]<br>
+            [Alternative Number]
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📧</div>
+          <div class="contact-card-title">Email &amp; Social</div>
+          <div class="contact-card-val">
+            [Official Email]<br>
+            [Facebook / Social Media Page]
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <!-- 💡 EDIT: Update footer text as needed -->
+  <footer>
+    <p><strong>Municipality of Imelda</strong> · Zamboanga Sibugay, Philippines</p>
+    <p style="margin-top:0.4rem;">
+      &copy; <span id="yr"></span> Local Government Unit of Imelda. All rights reserved.
+    </p>
+  </footer>
+
+
+  <!-- ================================================
+       JAVASCRIPT
+  ================================================ -->
+  <script>
+    // Auto copyright year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Hamburger toggle
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Subtle navbar shadow on scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.boxShadow =
+        window.scrollY > 20
+          ? '0 4px 30px rgba(0,0,0,0.5)'
+          : '0 2px 24px rgba(0,0,0,0.35)';
+    });
+  </script>
+
+</body>
+</html>
