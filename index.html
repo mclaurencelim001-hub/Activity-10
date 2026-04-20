@@ -608,29 +608,28 @@
     /* ============================================================
        GALLERY
     ============================================================ */
-    #gallery { background: var(--cream); }
-
+#gallery { background: var(--cream); }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 190px);
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(2,190px);
       gap: 0.7rem; margin-top: 2.5rem;
     }
-
     .g-item {
       overflow: hidden; position: relative; cursor: pointer;
       background: var(--crimson-dk);
       border-radius: 3px;
+      min-height: 180px;
     }
     .g-item img {
       width: 100%; height: 100%; object-fit: cover;
       position: absolute; inset: 0;
       transition: transform 0.45s;
+      display: block;
     }
     .g-item:hover img { transform: scale(1.07); }
     .g-item.wide { grid-column: span 2; }
     .g-item.tall { grid-row: span 2; }
-
     .g-ph {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
@@ -638,7 +637,6 @@
       font-size: 0.65rem; letter-spacing: 0.1em;
       text-transform: uppercase; text-align: center; padding: 1rem;
     }
-
     /* ============================================================
        CONTACT
     ============================================================ */
@@ -696,7 +694,7 @@
     /* ============================================================
        RESPONSIVE — Mobile first from 640px down
     ============================================================ */
-    @media (max-width: 960px) {
+@media (max-width: 960px) {
       .about-grid, .tourism-head, .culture-grid, .gov-grid {
         grid-template-columns: 1fr; gap: 2.5rem;
       }
@@ -704,8 +702,8 @@
       .cards-grid  { grid-template-columns: 1fr 1fr; }
       .econ-grid   { grid-template-columns: 1fr 1fr; }
       .contact-cards { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
-      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
-      .g-item.wide, .g-item.tall { grid-column: span 1; grid-row: span 1; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: none; }
+      .g-item.wide, .g-item.tall { grid-column: span 1; grid-row: span 1; height: 190px; }
       .cimg-stack { height: 260px; }
       .stats-inner { justify-content: center; }
     }
