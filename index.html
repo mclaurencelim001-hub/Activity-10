@@ -608,17 +608,18 @@
     /* ============================================================
        GALLERY
     ============================================================ */
-.gallery-grid {
+#gallery { background: var(--cream); }
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4,1fr);
-      grid-template-rows: 190px 190px 190px;
+      grid-template-columns: repeat(3,1fr);
+      grid-template-rows: repeat(2,220px);
       gap: 0.7rem; margin-top: 2.5rem;
     }
     .g-item {
       overflow: hidden; position: relative; cursor: pointer;
       background: var(--crimson-dk);
       border-radius: 3px;
-      min-height: 180px;
+      min-height: 220px;
     }
     .g-item img {
       width: 100%; height: 100%; object-fit: cover;
@@ -627,9 +628,9 @@
       display: block;
     }
     .g-item:hover img { transform: scale(1.07); }
- .g-item.wide { grid-column: span 2; }
-.g-item.tall { grid-row: span 2; }
-.g-item:last-child { grid-column: 1 / -1; }
+    .g-item.wide { grid-column: span 1; }
+    .g-item.tall { grid-row: span 1; }
+    .g-item:last-child { grid-column: span 1; }
     .g-ph {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
