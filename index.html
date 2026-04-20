@@ -3,747 +3,763 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Imelda, Zamboanga Sibugay</title>
+  <title>Imelda, Zamboanga Sibugay — Gateway to Culture and Beauty</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
   <style>
-    /* ===================== VARIABLES ===================== */
+    /* ============================================================
+       VARIABLES — warm sunrise palette inspired by Baluyan Peak
+    ============================================================ */
     :root {
-      --red:        #e01c1c;
-      --red-deep:   #8b0000;
-      --red-dark:   #1a0000;
-      --red-glow:   rgba(224,28,28,0.35);
-      --red-faint:  rgba(224,28,28,0.08);
-      --silver:     #c8d0d8;
-      --silver-dim: #7a8a96;
-      --white:      #f0f4f8;
-      --black:      #050a0e;
-      --panel:      #0d1318;
-      --panel-mid:  #111b22;
-      --grid-line:  rgba(224,28,28,0.12);
-      --gold:       #d4a84b;
+      --crimson:     #c0392b;
+      --crimson-mid: #9b2335;
+      --crimson-dk:  #5c0f1a;
+      --sunrise:     #e8843a;
+      --gold:        #d4a020;
+      --gold-lt:     #f0c84a;
+      --earth:       #8b5e3c;
+      --leaf:        #3d7a4f;
+      --leaf-lt:     #5a9e6a;
+      --cream:       #fdf8f0;
+      --cream-dk:    #f4ece0;
+      --warm-white:  #fffbf5;
+      --charcoal:    #1e1410;
+      --brown-mid:   #4a2e1a;
+      --text:        #2a1810;
+      --text-mid:    #5a3e2e;
+      --text-lt:     #9a7060;
+      --panel:       #1a0e08;
+      --panel-lt:    #241408;
     }
 
-    /* ===================== RESET ===================== */
+    /* ============================================================ RESET */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--black);
-      color: var(--silver);
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a   { text-decoration: none; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; }
 
-    /* ===================== GRID TEXTURE ===================== */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(var(--grid-line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
-
-    /* ===================== NAVBAR ===================== */
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 64px;
-      background: rgba(5,10,14,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(224,28,28,0.3);
+      height: 62px;
+      background: rgba(28, 10, 5, 0.96);
+      backdrop-filter: blur(16px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
+      border-bottom: 1px solid rgba(212,160,32,0.25);
     }
 
-    /* Scanning line animation on navbar */
-    nav::after {
-      content: '';
-      position: absolute; bottom: 0; left: -100%; width: 60%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--red), transparent);
-      animation: scan 4s linear infinite;
-    }
-    @keyframes scan { to { left: 140%; } }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
 
-    .nav-brand {
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-
-    .nav-logo {
-      width: 36px; height: 36px;
-      border: 1.5px solid var(--red);
+    .nav-seal {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.8rem; color: var(--red);
-      position: relative;
-      clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
-      background: rgba(224,28,28,0.08);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--gold); background: rgba(212,160,32,0.1);
+      flex-shrink: 0;
     }
 
-    .nav-brand-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 1.1rem;
-      color: var(--white); letter-spacing: 0.05em;
-      line-height: 1.1;
+    .nav-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.05rem;
+      color: #fff; line-height: 1.1;
     }
-
-    .nav-brand-text small {
+    .nav-title small {
       display: block;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem; color: var(--red);
-      letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.58rem; font-weight: 400;
+      color: rgba(212,160,32,0.8);
+      letter-spacing: 0.14em; text-transform: uppercase;
     }
 
-    .nav-links { list-style: none; display: flex; gap: 0; }
-
+    .nav-links { list-style: none; display: flex; }
     .nav-links a {
-      color: var(--silver-dim);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.5rem 1rem;
-      border-right: 1px solid rgba(224,28,28,0.15);
-      transition: all 0.2s;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      transition: color 0.2s;
       position: relative;
     }
-
-    .nav-links li:first-child a { border-left: 1px solid rgba(224,28,28,0.15); }
-
     .nav-links a::after {
       content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: var(--red);
-      transform: scaleX(0);
-      transition: transform 0.2s;
+      position: absolute; bottom: -1px; left: 0.9rem; right: 0.9rem; height: 1.5px;
+      background: var(--gold);
+      transform: scaleX(0); transition: transform 0.2s;
     }
-
-    .nav-links a:hover { color: var(--white); background: var(--red-faint); }
+    .nav-links a:hover { color: var(--gold-lt); }
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* Hamburger */
+    /* hamburger */
     .hamburger {
       display: none; flex-direction: column;
       justify-content: center; gap: 5px;
       cursor: pointer; background: none; border: none; padding: 4px;
     }
     .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--silver); border-radius: 1px;
+      display: block; width: 23px; height: 2px;
+      background: #fff; border-radius: 2px;
       transition: transform 0.3s, opacity 0.3s;
     }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile menu */
+    /* mobile dropdown */
     .mobile-menu {
       display: none;
-      position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
-      background: rgba(5,10,14,0.98);
-      border-bottom: 1px solid rgba(224,28,28,0.3);
+      position: fixed; top: 62px; left: 0; right: 0; z-index: 999;
+      background: rgba(20, 6, 2, 0.98);
       flex-direction: column;
-      animation: slideDown 0.25s ease;
+      border-bottom: 1px solid rgba(212,160,32,0.2);
     }
-    .mobile-menu.open { display: flex; }
+    .mobile-menu.open { display: flex; animation: mSlide 0.22s ease; }
     .mobile-menu a {
-      color: var(--silver);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.95rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(224,28,28,0.1);
-      transition: all 0.2s;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 0.95rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.18s;
     }
-    .mobile-menu a:hover { color: var(--red); background: var(--red-faint); padding-left: 2.5rem; }
-    @keyframes slideDown { from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);} }
+    .mobile-menu a:hover { color: var(--gold-lt); background: rgba(212,160,32,0.06); padding-left: 2.4rem; }
+    @keyframes mSlide { from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);} }
 
-    /* ===================== HERO ===================== */
+    /* ============================================================
+       HERO — Sunrise over Baluyan Peak vibe
+    ============================================================ */
     #home {
       min-height: 100vh;
       background:
-        linear-gradient(160deg, rgba(5,10,14,0.88) 0%, rgba(26,0,0,0.80) 50%, rgba(5,10,14,0.92) 100%),
+        linear-gradient(175deg, rgba(20,5,2,0.75) 0%, rgba(92,15,26,0.60) 40%, rgba(232,132,58,0.18) 80%, rgba(20,5,2,0.5) 100%),
         url('YOUR_HERO_IMAGE_URL_HERE') center/cover no-repeat;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
-      padding: 7rem 1.5rem 5rem;
+      padding: 7rem 1.5rem 6rem;
       position: relative;
     }
 
-    /* Corner brackets */
-    #home::before {
+    /* Diagonal bottom cut */
+    #home::after {
       content: '';
-      position: absolute;
-      top: 80px; left: 2rem; right: 2rem; bottom: 2rem;
-      border: 1px solid rgba(224,28,28,0.15);
-      pointer-events: none;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 70px;
+      background: var(--cream);
+      clip-path: polygon(0 100%, 100% 30%, 100% 100%);
     }
 
-    .hero-sys {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem; color: var(--red);
-      letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem;
-      animation: fadeUp 0.6s ease both;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      color: var(--gold-lt);
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      animation: riseUp 0.7s ease both;
     }
-
-    .hero-sys::before, .hero-sys::after {
+    .hero-eyebrow::before, .hero-eyebrow::after {
       content: ''; display: block;
-      width: 40px; height: 1px; background: var(--red);
+      width: 32px; height: 1px;
+      background: var(--gold);
     }
 
     .hero-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 8rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 0.9;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-      animation: fadeUp 0.6s 0.1s ease both;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.8rem, 11vw, 9rem);
+      font-weight: 900; color: #fff;
+      line-height: 0.88; letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+      animation: riseUp 0.7s 0.1s ease both;
     }
 
-    .hero-title span { color: var(--red); display: block; }
+    .hero-title .sub-place {
+      display: block;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      font-weight: 700; font-style: italic;
+      color: var(--sunrise);
+      letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+    }
 
-    .hero-sub {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
-      color: var(--silver-dim);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s 0.2s ease both;
+    .hero-prov {
+      font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.8rem;
+      animation: riseUp 0.7s 0.2s ease both;
     }
 
     .hero-tagline {
-      max-width: 500px;
-      font-size: 1rem; font-weight: 300;
-      color: rgba(200,208,216,0.75);
-      line-height: 1.8;
+      max-width: 480px; font-size: 1.02rem; font-weight: 300;
+      color: rgba(255,255,255,0.78); line-height: 1.82;
       margin-bottom: 2.5rem;
-      animation: fadeUp 0.6s 0.3s ease both;
+      animation: riseUp 0.7s 0.3s ease both;
     }
 
-    .hero-btns {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 0.6s 0.4s ease both;
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: riseUp 0.7s 0.4s ease both;
+      margin-bottom: 1rem;
     }
 
-    .btn-red {
-      background: var(--red);
-      color: var(--white);
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 0.82rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    .btn-primary {
+      background: var(--crimson);
+      color: #fff; font-weight: 600; font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(192,57,43,0.4);
+    }
+    .btn-primary:hover { background: #e04030; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(192,57,43,0.5); }
+
+    .btn-secondary {
+      border: 1.5px solid rgba(255,255,255,0.45);
+      color: #fff; font-weight: 500; font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.9rem 2.2rem; border-radius: 2px;
       transition: all 0.2s;
     }
-    .btn-red:hover { background: #ff2020; box-shadow: 0 0 20px var(--red-glow); }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold-lt); }
 
-    .btn-outline {
-      border: 1px solid rgba(224,28,28,0.6);
-      color: var(--silver);
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 600; font-size: 0.82rem;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      transition: all 0.2s;
-    }
-    .btn-outline:hover { border-color: var(--red); color: var(--white); background: var(--red-faint); }
-
-    /* Stats bar */
+    /* stats ribbon */
     .hero-stats {
-      position: absolute; bottom: 2.5rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex; gap: 0;
-      border: 1px solid rgba(224,28,28,0.25);
-      background: rgba(5,10,14,0.8);
-      animation: fadeUp 0.6s 0.5s ease both;
+      position: absolute; bottom: 76px; left: 0; right: 0;
+      display: flex; justify-content: center;
+      animation: riseUp 0.7s 0.5s ease both;
     }
-
+    .stats-inner {
+      display: flex;
+      background: rgba(20,5,2,0.82);
+      border: 1px solid rgba(212,160,32,0.2);
+      backdrop-filter: blur(8px);
+      flex-wrap: wrap;
+    }
     .stat-item {
-      padding: 0.8rem 1.8rem;
-      text-align: center;
-      border-right: 1px solid rgba(224,28,28,0.2);
+      padding: 0.9rem 1.8rem; text-align: center;
+      border-right: 1px solid rgba(212,160,32,0.15);
     }
     .stat-item:last-child { border-right: none; }
-
     .stat-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.4rem; font-weight: 700;
-      color: var(--red); line-height: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--gold-lt); line-height: 1;
     }
-
     .stat-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--silver-dim);
+      font-size: 0.58rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
       margin-top: 4px;
     }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
+    @keyframes riseUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
 
-    /* ===================== SHARED SECTION ===================== */
-    section { padding: 5.5rem 1.5rem; position: relative; z-index: 1; }
+    /* ============================================================
+       SHARED
+    ============================================================ */
+    section { padding: 5.5rem 1.5rem; position: relative; }
     .container { max-width: 1080px; margin: 0 auto; }
 
-    .sec-tag {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem; color: var(--red);
-      letter-spacing: 0.2em; text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      display: flex; align-items: center; gap: 0.6rem;
-    }
-    .sec-tag::before {
-      content: '//'; opacity: 0.5;
+    .eyebrow {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--crimson); margin-bottom: 0.7rem;
     }
 
     .sec-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 700; text-transform: uppercase;
-      color: var(--white); letter-spacing: 0.05em;
-      line-height: 1.1; margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700; color: var(--charcoal);
+      line-height: 1.12; margin-bottom: 1rem;
     }
-    .sec-title em { font-style: normal; color: var(--red); }
+    .sec-title em { font-style: italic; color: var(--crimson-mid); }
 
     .sec-body {
-      font-size: 0.95rem; font-weight: 300;
-      color: var(--silver-dim); line-height: 1.85;
-      max-width: 560px;
+      font-size: 0.97rem; font-weight: 300;
+      color: var(--text-mid); line-height: 1.9;
+      max-width: 580px;
     }
 
-    .divider {
-      width: 48px; height: 2px;
-      background: linear-gradient(90deg, var(--red), transparent);
-      margin: 1rem 0 1.5rem;
+    .rule {
+      width: 44px; height: 2.5px;
+      background: linear-gradient(90deg, var(--crimson), var(--sunrise));
+      border-radius: 2px; margin: 1rem 0 1.6rem;
     }
 
-    /* ===================== ACCENT LINE ===================== */
-    .accent-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+    /* Wave divider */
+    .wave-div {
+      height: 40px; overflow: hidden;
       position: relative; z-index: 1;
     }
+    .wave-div svg { display: block; width: 100%; height: 100%; }
 
-    /* ===================== ABOUT ===================== */
-    #about { background: var(--panel); }
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about { background: var(--warm-white); }
 
     .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 5rem; align-items: center;
     }
 
-    .about-img-wrap { position: relative; }
+    .about-img-frame { position: relative; }
 
-    .about-img-wrap img {
-      width: 100%; height: 420px;
-      object-fit: cover;
-      border: 1px solid rgba(224,28,28,0.25);
-      filter: grayscale(20%) contrast(1.05);
+    .about-img-frame img {
+      width: 100%; height: 460px; object-fit: cover;
+      border-radius: 3px;
+      box-shadow: 0 16px 48px rgba(90,30,10,0.18);
     }
 
-    .about-img-placeholder {
-      width: 100%; height: 420px;
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.2);
+    .about-img-frame .img-placeholder {
+      width: 100%; height: 460px;
+      background: linear-gradient(135deg, var(--crimson-dk), var(--crimson-mid));
+      border-radius: 3px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      color: rgba(224,28,28,0.3);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem; letter-spacing: 0.1em;
-      text-transform: uppercase; gap: 0.8rem; text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; gap: 0.6rem;
     }
 
-    /* Corner accents on image */
-    .about-img-wrap::before, .about-img-wrap::after {
+    /* decorative bracket */
+    .about-img-frame::before {
       content: '';
-      position: absolute;
-      width: 20px; height: 20px;
-      border-color: var(--red); border-style: solid;
-      z-index: 2;
+      position: absolute; top: -10px; left: -10px;
+      width: 50px; height: 50px;
+      border-top: 3px solid var(--gold);
+      border-left: 3px solid var(--gold);
+      pointer-events: none;
     }
-    .about-img-wrap::before { top: -6px; left: -6px; border-width: 2px 0 0 2px; }
-    .about-img-wrap::after  { bottom: -6px; right: -6px; border-width: 0 2px 2px 0; }
 
     .about-badge {
-      position: absolute; bottom: -1rem; right: -1rem;
-      background: var(--red-deep);
-      border: 1px solid rgba(224,28,28,0.5);
-      padding: 1.1rem 1.4rem; text-align: center;
-      box-shadow: 0 0 24px var(--red-glow);
+      position: absolute; bottom: -1.2rem; right: -1.2rem;
+      background: var(--crimson);
+      color: #fff; padding: 1.2rem 1.5rem; text-align: center;
+      border-radius: 2px;
+      box-shadow: 0 8px 28px rgba(192,57,43,0.4);
     }
     .about-badge-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 2rem; font-weight: 700;
-      color: var(--white); line-height: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700; line-height: 1;
     }
-    .about-badge-text {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem; color: var(--red);
-      letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px;
+    .about-badge-lbl {
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0.85; margin-top: 3px;
     }
 
     .about-facts {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0.75rem; margin-top: 1.8rem;
+      gap: 0.8rem; margin-top: 2rem;
     }
-
     .fact-card {
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.15);
-      border-left: 2px solid var(--red);
-      padding: 0.9rem 1.1rem;
+      background: var(--cream-dk);
+      border-left: 3px solid var(--crimson);
+      padding: 0.9rem 1.1rem; border-radius: 0 3px 3px 0;
     }
-    .fact-label {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.58rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--red);
-      margin-bottom: 5px;
+    .fact-lbl {
+      font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--crimson); margin-bottom: 5px;
     }
-    .fact-value {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 600; color: var(--white);
+    .fact-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--charcoal);
     }
 
-    /* ===================== TOURISM ===================== */
-    #tourism { background: var(--black); }
+    /* ============================================================
+       TOURISM — Mountain/nature card layout
+    ============================================================ */
+    #tourism { background: var(--cream); }
 
-    .tourism-intro {
+    .tourism-head {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 4rem; align-items: end; margin-bottom: 3rem;
     }
 
     .cards-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     }
 
-    .attraction-card {
-      background: var(--panel);
-      border: 1px solid rgba(224,28,28,0.15);
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-      position: relative;
+    .tour-card {
+      background: var(--warm-white);
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(90,30,10,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .attraction-card:hover {
-      border-color: var(--red);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(224,28,28,0.15);
+    .tour-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(90,30,10,0.15);
     }
 
     .card-img {
-      height: 190px;
-      background: var(--panel-mid);
-      position: relative; overflow: hidden;
+      height: 200px; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--crimson-dk), var(--crimson));
       display: flex; align-items: center; justify-content: center;
-      color: rgba(224,28,28,0.25);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
     }
     .card-img img {
       width: 100%; height: 100%; object-fit: cover;
       position: absolute; inset: 0;
-      filter: grayscale(15%);
-      transition: transform 0.4s;
+      transition: transform 0.45s;
     }
-    .attraction-card:hover .card-img img { transform: scale(1.05); }
+    .tour-card:hover .card-img img { transform: scale(1.06); }
 
-    .card-cat {
-      position: absolute; top: 0.7rem; left: 0.7rem;
-      background: var(--red); color: var(--white);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; z-index: 1;
+    .card-badge {
+      position: absolute; top: 0.8rem; left: 0.8rem; z-index: 1;
+      background: var(--sunrise); color: #fff;
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem; border-radius: 2px;
     }
 
-    .card-body { padding: 1.2rem; }
+    .card-body { padding: 1.3rem; }
     .card-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--white); margin-bottom: 0.5rem;
-      text-transform: uppercase; letter-spacing: 0.05em;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.5rem;
     }
-    .card-desc { font-size: 0.82rem; font-weight: 300; color: var(--silver-dim); line-height: 1.65; }
+    .card-desc { font-size: 0.83rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; }
 
-    /* ===================== CULTURE ===================== */
-    #culture { background: var(--panel); }
+    /* ============================================================
+       CULTURE — warm festival dark section
+    ============================================================ */
+    #culture {
+      background: var(--panel);
+      color: #fff;
+      position: relative; overflow: hidden;
+    }
+
+    /* subtle warm texture overlay */
+    #culture::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 80% 20%, rgba(232,132,58,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 10% 80%, rgba(192,57,43,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #culture .eyebrow { color: var(--gold-lt); }
+    #culture .sec-title { color: #fff; }
+    #culture .sec-title em { color: var(--sunrise); }
+    #culture .sec-body { color: rgba(255,255,255,0.6); max-width: 100%; }
+    #culture .rule { background: linear-gradient(90deg, var(--sunrise), var(--gold)); }
 
     .culture-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
+      gap: 5rem; align-items: center; position: relative; z-index: 1;
     }
 
-    .culture-list {
-      list-style: none; display: flex;
-      flex-direction: column; gap: 1.1rem; margin-top: 1.8rem;
-    }
-    .culture-list li {
+    .culture-items { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.8rem; }
+
+    .culture-items li {
       display: flex; align-items: flex-start; gap: 1rem;
-      padding: 1rem;
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.1);
-      border-left: 2px solid var(--red);
-      transition: border-color 0.2s;
+      padding: 1.1rem 1.2rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid var(--sunrise);
+      transition: background 0.2s, border-left-color 0.2s;
     }
-    .culture-list li:hover { border-left-color: var(--gold); }
+    .culture-items li:hover { background: rgba(232,132,58,0.07); border-left-color: var(--gold); }
 
-    .culture-icon {
-      width: 34px; height: 34px; flex-shrink: 0;
-      background: rgba(224,28,28,0.12);
-      border: 1px solid rgba(224,28,28,0.3);
+    .c-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: rgba(232,132,58,0.15);
+      border: 1px solid rgba(232,132,58,0.3);
+      border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
-    .culture-item-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--white); margin-bottom: 3px;
-      text-transform: uppercase; letter-spacing: 0.05em;
-    }
-    .culture-item-desc { font-size: 0.8rem; color: var(--silver-dim); line-height: 1.6; }
 
-    .culture-img-stack { position: relative; height: 400px; }
+    .c-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 4px;
+    }
+    .c-desc { font-size: 0.8rem; color: rgba(255,255,255,0.52); line-height: 1.65; }
+
+    .cimg-stack { position: relative; height: 420px; }
     .cimg {
       position: absolute; overflow: hidden;
-      border: 1px solid rgba(224,28,28,0.25);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(232,132,58,0.2);
     }
-    .cimg-1 { width: 65%; height: 260px; top: 0; left: 0; background: var(--panel-mid); }
-    .cimg-2 { width: 55%; height: 200px; bottom: 0; right: 0; background: #0d0505; }
-    .cimg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
-    .cimg-placeholder {
+    .cimg-1 { width: 66%; height: 270px; top: 0; left: 0; background: var(--panel-lt); }
+    .cimg-2 { width: 56%; height: 210px; bottom: 0; right: 0; background: #200a04; }
+    .cimg img { width: 100%; height: 100%; object-fit: cover; }
+    .cimg-ph {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
-      color: rgba(224,28,28,0.25);
-      font-family: 'Share Tech Mono', monospace;
+      color: rgba(232,132,58,0.25);
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 1rem;
+    }
+
+    /* ============================================================
+       ECONOMY — earthy card grid
+    ============================================================ */
+    #economy { background: var(--cream-dk); }
+
+    .econ-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.3rem; margin-top: 3rem;
+    }
+
+    .econ-card {
+      background: var(--warm-white);
+      border-radius: 4px; padding: 2rem 1.3rem; text-align: center;
+      border-top: 3px solid var(--crimson);
+      box-shadow: 0 2px 12px rgba(90,30,10,0.06);
+      transition: all 0.3s;
+    }
+    .econ-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(90,30,10,0.12);
+      border-top-color: var(--sunrise);
+    }
+
+    .econ-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .econ-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .econ-desc { font-size: 0.8rem; font-weight: 300; color: var(--text-mid); line-height: 1.65; }
+
+    /* ============================================================
+       GOVERNMENT — clean official dark panel
+    ============================================================ */
+    #government { background: var(--warm-white); }
+
+    .gov-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+
+    .officials-list { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.8rem; }
+
+    .official-card {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--cream-dk);
+      border: 1px solid rgba(192,57,43,0.1);
+      padding: 0.85rem 1.1rem; border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .official-card:hover {
+      border-color: rgba(192,57,43,0.35);
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(90,30,10,0.08);
+    }
+
+    .off-avatar {
+      width: 46px; height: 46px; flex-shrink: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(192,57,43,0.3);
+      background: linear-gradient(135deg, var(--crimson-dk), var(--crimson-mid));
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.58rem; text-align: center;
+    }
+    .off-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .off-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--charcoal);
+    }
+    .off-pos {
+      font-size: 0.68rem; font-weight: 500;
+      color: var(--crimson); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-top: 2px;
+    }
+
+    /* scrollable on mobile */
+    .officials-scroll { max-height: 520px; overflow-y: auto; padding-right: 4px; }
+    .officials-scroll::-webkit-scrollbar { width: 4px; }
+    .officials-scroll::-webkit-scrollbar-track { background: var(--cream-dk); }
+    .officials-scroll::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 2px; }
+
+    .contact-panel {
+      background: var(--charcoal);
+      border-radius: 4px; padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 8px 32px rgba(20,5,2,0.2);
+    }
+    .contact-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: #fff; margin-bottom: 1.3rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(212,160,32,0.2);
+    }
+    .c-row {
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.88rem; color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+    .c-row:last-child { border-bottom: none; }
+    .c-row span:first-child { flex-shrink: 0; font-size: 1rem; }
+
+    /* ============================================================
+       GALLERY
+    ============================================================ */
+    #gallery { background: var(--cream); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 190px);
+      gap: 0.7rem; margin-top: 2.5rem;
+    }
+
+    .g-item {
+      overflow: hidden; position: relative; cursor: pointer;
+      background: var(--crimson-dk);
+      border-radius: 3px;
+    }
+    .g-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      position: absolute; inset: 0;
+      transition: transform 0.45s;
+    }
+    .g-item:hover img { transform: scale(1.07); }
+    .g-item.wide { grid-column: span 2; }
+    .g-item.tall { grid-row: span 2; }
+
+    .g-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.2);
       font-size: 0.65rem; letter-spacing: 0.1em;
       text-transform: uppercase; text-align: center; padding: 1rem;
     }
 
-    /* ===================== ECONOMY ===================== */
-    #economy { background: var(--black); }
-
-    .economy-grid {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 1.2rem; margin-top: 3rem;
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact {
+      background: var(--crimson-dk);
+      color: #fff; text-align: center;
+      position: relative; overflow: hidden;
     }
-
-    .econ-card {
-      background: var(--panel);
-      border: 1px solid rgba(224,28,28,0.12);
-      border-top: 2px solid var(--red);
-      padding: 1.8rem 1.2rem; text-align: center;
-      transition: all 0.3s;
-    }
-    .econ-card:hover {
-      background: var(--panel-mid);
-      box-shadow: 0 0 24px rgba(224,28,28,0.12);
-      transform: translateY(-3px);
-    }
-    .econ-icon {
-      font-size: 1.6rem; margin-bottom: 1rem;
-      filter: grayscale(30%);
-    }
-    .econ-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--white); text-transform: uppercase;
-      letter-spacing: 0.06em; margin-bottom: 0.5rem;
-    }
-    .econ-desc { font-size: 0.78rem; color: var(--silver-dim); line-height: 1.6; font-weight: 300; }
-
-    /* ===================== GOVERNMENT ===================== */
-    #government { background: var(--panel); }
-
-    .gov-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: start;
-    }
-
-    .officials-list {
-      display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.8rem;
-    }
-
-    .official-card {
-      display: flex; align-items: center; gap: 1rem;
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.12);
-      padding: 0.9rem 1.1rem;
-      transition: border-color 0.2s;
-    }
-    .official-card:hover { border-color: rgba(224,28,28,0.4); }
-
-    .official-avatar {
-      width: 46px; height: 46px; flex-shrink: 0;
-      border: 1px solid rgba(224,28,28,0.3);
-      background: var(--red-deep);
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.3);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.55rem; text-align: center;
-    }
-    .official-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-    .official-name {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--white); text-transform: uppercase; letter-spacing: 0.04em;
-    }
-    .official-pos {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem; color: var(--red);
-      text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px;
-    }
-
-    .contact-info {
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.2);
-      border-top: 2px solid var(--red);
-      padding: 1.8rem; margin-top: 1.8rem;
-    }
-    .contact-info h3 {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--white); text-transform: uppercase;
-      letter-spacing: 0.08em; margin-bottom: 1.2rem;
-    }
-    .contact-row {
-      display: flex; align-items: flex-start; gap: 0.8rem;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid rgba(224,28,28,0.08);
-      font-size: 0.85rem; color: var(--silver-dim);
-    }
-    .contact-row:last-child { border-bottom: none; }
-    .contact-row span:first-child { font-size: 0.95rem; flex-shrink: 0; }
-
-    /* ===================== GALLERY ===================== */
-    #gallery { background: var(--black); }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      grid-template-rows: repeat(2,180px);
-      gap: 0.6rem; margin-top: 2.5rem;
-    }
-
-    .gallery-item {
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid rgba(224,28,28,0.12);
-      position: relative; cursor: pointer;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
+    #contact::before {
+      content: '';
       position: absolute; inset: 0;
-      filter: grayscale(20%);
-      transition: transform 0.4s, filter 0.4s;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(232,132,58,0.15) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
-    .gallery-item:hover { border-color: var(--red); }
-    .gallery-item.wide { grid-column: span 2; }
-    .gallery-item.tall { grid-row:    span 2; }
-
-    .gallery-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(224,28,28,0.22);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 0.1em;
-      text-transform: uppercase; text-align: center; padding: 1rem;
-    }
-
-    /* ===================== CONTACT ===================== */
-    #contact { background: var(--panel); text-align: center; }
+    #contact .eyebrow { color: var(--gold-lt); }
+    #contact .sec-title { color: #fff; }
+    #contact .sec-title em { color: var(--sunrise); }
+    #contact .rule { background: linear-gradient(90deg, var(--sunrise), var(--gold)); margin: 1rem auto 1.5rem; }
 
     .contact-cards {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 1.2rem; margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem; margin-top: 3rem; position: relative; z-index: 1;
     }
-    .contact-card {
-      background: var(--panel-mid);
-      border: 1px solid rgba(224,28,28,0.15);
-      padding: 2rem 1.5rem;
+
+    .con-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px; padding: 2rem 1.5rem;
       transition: all 0.2s;
-      position: relative;
     }
-    .contact-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--red);
-      transform: scaleX(0); transition: transform 0.3s;
+    .con-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(212,160,32,0.4);
+      transform: translateY(-3px);
     }
-    .contact-card:hover { border-color: rgba(224,28,28,0.4); }
-    .contact-card:hover::before { transform: scaleX(1); }
+    .con-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .con-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;
+    }
+    .con-val { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
 
-    .contact-card-icon { font-size: 1.6rem; margin-bottom: 1rem; }
-    .contact-card-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--white); text-transform: uppercase;
-      letter-spacing: 0.08em; margin-bottom: 0.5rem;
-    }
-    .contact-card-val { font-size: 0.85rem; color: var(--silver-dim); line-height: 1.7; }
-
-    /* ===================== FOOTER ===================== */
+    /* ============================================================
+       FOOTER
+    ============================================================ */
     footer {
-      background: #020507;
-      border-top: 1px solid rgba(224,28,28,0.2);
-      color: rgba(200,208,216,0.35);
+      background: #0e0403;
+      border-top: 1px solid rgba(212,160,32,0.15);
       text-align: center; padding: 2rem 1.5rem;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem; line-height: 1.9;
-      position: relative; z-index: 1;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.76rem; line-height: 1.9;
     }
-    footer strong { color: rgba(200,208,216,0.6); }
+    footer strong { color: rgba(255,255,255,0.6); }
 
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 900px) {
-      .about-grid, .tourism-intro, .culture-grid, .gov-grid {
+    /* ============================================================
+       RESPONSIVE — Mobile first from 640px down
+    ============================================================ */
+    @media (max-width: 960px) {
+      .about-grid, .tourism-head, .culture-grid, .gov-grid {
         grid-template-columns: 1fr; gap: 2.5rem;
       }
-      .about-badge { right: 0; }
-      .cards-grid    { grid-template-columns: 1fr 1fr; }
-      .economy-grid  { grid-template-columns: 1fr 1fr; }
-      .contact-cards { grid-template-columns: 1fr; }
-      .gallery-grid  { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
-      .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; }
-      .culture-img-stack { height: 260px; }
-      .hero-stats { gap: 0; }
+      .about-badge { right: 0; bottom: -1rem; }
+      .cards-grid  { grid-template-columns: 1fr 1fr; }
+      .econ-grid   { grid-template-columns: 1fr 1fr; }
+      .contact-cards { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+      .g-item.wide, .g-item.tall { grid-column: span 1; grid-row: span 1; }
+      .cimg-stack { height: 260px; }
+      .stats-inner { justify-content: center; }
     }
 
     @media (max-width: 640px) {
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .cards-grid   { grid-template-columns: 1fr; }
-      .economy-grid { grid-template-columns: 1fr 1fr; }
-      .about-facts  { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .hero-stats   { flex-wrap: wrap; }
-      .stat-item    { padding: 0.7rem 1.2rem; }
-      section { padding: 4rem 1rem; }
-      #home { padding: 6rem 1rem 5rem; }
+
+      #home { padding: 6.5rem 1rem 5.5rem; }
       #home::before { display: none; }
+
+      .hero-stats { bottom: 70px; left: 1rem; right: 1rem; }
+      .stats-inner { width: 100%; }
+      .stat-item { flex: 1; padding: 0.7rem 0.8rem; min-width: 80px; }
+      .stat-num { font-size: 1.1rem; }
+
+      .cards-grid  { grid-template-columns: 1fr; }
+      .econ-grid   { grid-template-columns: 1fr 1fr; }
+      .about-facts { grid-template-columns: 1fr; }
+      .gallery-grid{ grid-template-columns: 1fr 1fr; }
+      .contact-cards { grid-template-columns: 1fr; max-width: 100%; }
+
+      section { padding: 4rem 1rem; }
+
+      .about-img-frame img,
+      .about-img-frame .img-placeholder { height: 280px; }
+
+      .cimg-stack { height: 220px; }
+      .cimg-1 { width: 60%; height: 160px; }
+      .cimg-2 { width: 55%; height: 130px; }
+
+      .officials-scroll { max-height: 400px; }
+
+      .sec-title { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title { font-size: 3rem; }
+      .stat-num { font-size: 1rem; }
+      .stat-label { font-size: 0.5rem; }
+      .econ-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================================================
-       NAVBAR
-  ================================================ -->
+  <!-- ============================================================
+       NAVBAR — 7 menus, collapses to hamburger on mobile
+  ============================================================ -->
   <nav>
     <a class="nav-brand" href="#home">
-      <div class="nav-logo">IZ</div>
-      <div class="nav-brand-text">
+      <div class="nav-seal">IZ</div>
+      <div class="nav-title">
         Imelda
         <small>Zamboanga Sibugay · PH</small>
       </div>
@@ -759,12 +775,11 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- Mobile Collapsible Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home"       onclick="closeMenu()">Home</a>
     <a href="#about"      onclick="closeMenu()">About</a>
@@ -776,103 +791,99 @@
   </div>
 
 
-  <!-- ================================================
-       SECTION 1 — HOME
-       💡 HERO PHOTO: In CSS find url('YOUR_HERO_IMAGE_URL_HERE') and replace
-  ================================================ -->
+  <!-- ============================================================
+       HOME / HERO
+       💡 Replace url('YOUR_HERO_IMAGE_URL_HERE') in CSS with your photo
+  ============================================================ -->
   <section id="home">
-    <div class="hero-sys">MUNICIPALITY OF IMELDA</div>
+    <div class="hero-eyebrow">Gateway to Culture and Beauty</div>
 
     <h1 class="hero-title">
       Imelda
-      <span>Zamboanga Sibugay</span>
+      <span class="sub-place">Zamboanga Sibugay</span>
     </h1>
 
-    <p class="hero-sub">Province of Zamboanga Sibugay &nbsp;·&nbsp; Philippines</p>
+    <p class="hero-prov">Province of Zamboanga Sibugay &nbsp;·&nbsp; Philippines</p>
 
-    <!-- 💡 EDIT: Replace tagline text -->
     <p class="hero-tagline">
-  Welcome to Imelda, Zamboanga Sibugay—a peaceful community in the heart of the region
+      Welcome to Imelda, Zamboanga Sibugay — a peaceful community in the heart of the region.
     </p>
 
-    <div class="hero-btns">
-      <a href="#tourism" class="btn-red">Explore the Town</a>
-      <a href="#about"   class="btn-outline">Learn More</a>
+    <div class="hero-cta">
+      <a href="#tourism" class="btn-primary">Explore the Town</a>
+      <a href="#about"   class="btn-secondary">Learn More</a>
     </div>
 
-    <!-- 💡 EDIT: Replace [##] with actual numbers -->
     <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">29,652</div>
-        <div class="stat-label">Population</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">18</div>
-        <div class="stat-label">Barangays</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">255.51 km²</div>
-        <div class="stat-label">Land Area</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">November 11, 1977</div>
-        <div class="stat-label">Established</div>
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">29,652</div>
+          <div class="stat-label">Population</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">18</div>
+          <div class="stat-label">Barangays</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">255.51 km²</div>
+          <div class="stat-label">Land Area</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Nov 11, 1977</div>
+          <div class="stat-label">Established</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 2 — ABOUT
-  ================================================ -->
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
 
-        <div class="about-img-wrap">
-          <img src="Bayan ng Imelda.jpg">
+        <div class="about-img-frame">
+          <img src="Bayan ng Imelda.jpg" alt="Imelda, Zamboanga Sibugay"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="img-placeholder" style="display:none;">
             <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <rect x="3" y="3" width="18" height="18" rx="1"/>
               <circle cx="8.5" cy="8.5" r="1.5"/>
               <path d="M21 15l-5-5L5 21"/>
             </svg>
+            <span>Insert Photo</span>
           </div>
-          
           <div class="about-badge">
             <div class="about-badge-num">1977</div>
-            <div class="about-badge-text">Founded</div>
+            <div class="about-badge-lbl">Founded</div>
           </div>
         </div>
 
         <div>
-          <p class="sec-tag">About the Municipality</p>
-          <h2 class="sec-title">About <em>Imelda</em></h2>
-          <div class="divider"></div>
-
-         
+          <p class="eyebrow">About the Municipality</p>
+          <h2 class="sec-title">Welcome to <em>Imelda</em></h2>
+          <div class="rule"></div>
           <p class="sec-body">
-            Imelda, officially the Municipality of Imelda (Cebuano: Lungsod sa Imelda; Chavacano: Municipalidad de Imelda; Tagalog: Bayan ng Imelda), is a municipality in the province of Zamboanga Sibugay, Philippines. According to the 2024 census, it has a population of 29,652 people. The municipality is the least populous in the province and the third smallest in area.
+            Imelda, officially the Municipality of Imelda (Cebuano: <em>Lungsod sa Imelda</em>; Chavacano: <em>Municipalidad de Imelda</em>; Tagalog: <em>Bayan ng Imelda</em>), is a municipality in the province of Zamboanga Sibugay, Philippines. According to the 2024 census, it has a population of 29,652 people. The municipality is the least populous in the province and the third smallest in area.
           </p>
-
-       
           <div class="about-facts">
             <div class="fact-card">
-              <div class="fact-label">Classification</div>
-              <div class="fact-value">4th Class Municipality</div>
+              <div class="fact-lbl">Classification</div>
+              <div class="fact-val">4th Class Municipality</div>
             </div>
             <div class="fact-card">
-              <div class="fact-label">District</div>
-              <div class="fact-value">1st Congressional District</div>
+              <div class="fact-lbl">District</div>
+              <div class="fact-val">1st Congressional District</div>
             </div>
             <div class="fact-card">
-              <div class="fact-label">Total Barangays</div>
-              <div class="fact-value">18 Barangays</div>
+              <div class="fact-lbl">Total Barangays</div>
+              <div class="fact-val">18 Barangays</div>
             </div>
             <div class="fact-card">
-              <div class="fact-label">Language / Dialect</div>
-              <div class="fact-value">Subanon, Cebuano, Chavacano, Tagalog</div>
+              <div class="fact-lbl">Language / Dialect</div>
+              <div class="fact-val">Subanon, Cebuano, Chavacano, Tagalog</div>
             </div>
           </div>
         </div>
@@ -881,34 +892,29 @@
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 3 — TOURISM
-  ================================================ -->
+  <!-- ============================================================
+       TOURISM
+  ============================================================ -->
   <section id="tourism">
     <div class="container">
-      <div class="tourism-intro">
+      <div class="tourism-head">
         <div>
-          <p class="sec-tag">Explore &amp; Discover</p>
+          <p class="eyebrow">Explore &amp; Discover</p>
           <h2 class="sec-title">Tourist <em>Attractions</em></h2>
-          <div class="divider"></div>
+          <div class="rule"></div>
         </div>
-        <!-- 💡 EDIT: Tourism overview -->
         <p class="sec-body">
-           Imelda, Zamboanga Sibugay, is an emerging eco-cultural destination marketed as the "Gateway to Culture and Beauty." Though one of the least populous municipalities in the province, it is recognized for its peaceful, community-driven atmosphere and its role as a strategic jumping-off point for exploring Zamboanga Sibugay's broader natural wonders.
+          Imelda, Zamboanga Sibugay, is an emerging eco-cultural destination marketed as the "Gateway to Culture and Beauty." Though one of the least populous municipalities in the province, it is recognized for its peaceful, community-driven atmosphere and its role as a strategic jumping-off point for exploring Zamboanga Sibugay's broader natural wonders.
         </p>
       </div>
 
       <div class="cards-grid">
 
-        <!-- CARD 1 — 💡 EDIT: category, photo, title, description -->
-        <div class="attraction-card">
+        <div class="tour-card">
           <div class="card-img">
-            <span class="card-cat">Eco-Cultural & Agri-Tourism</span>
-            <img src ="1st Tourist Attraction.jpg">
-            <span>"1st Tourist Attraction.jpg"</span>
+            <span class="card-badge">Eco-Cultural &amp; Agri-Tourism</span>
+            <img src="1st Tourist Attraction.jpg" alt="Viente Uno Park">
           </div>
           <div class="card-body">
             <div class="card-title">Viente Uno Park and Mountain Resort</div>
@@ -916,12 +922,10 @@
           </div>
         </div>
 
-        <!-- CARD 2 -->
-        <div class="attraction-card">
+        <div class="tour-card">
           <div class="card-img">
-            <span class="card-cat">Adventure & Physical Activity</span>
-            <img src ="2nd Tourist Attraction.jpg">
-            <span>"2nd Tourist Attraction.jpg"</span>
+            <span class="card-badge">Adventure &amp; Physical Activity</span>
+            <img src="2nd Tourist Attraction.jpg" alt="Baluran Waterfalls">
           </div>
           <div class="card-body">
             <div class="card-title">Baluran Waterfalls</div>
@@ -929,16 +933,14 @@
           </div>
         </div>
 
-        <!-- CARD 3 -->
-        <div class="attraction-card">
+        <div class="tour-card">
           <div class="card-img">
-            <span class="card-cat">Scenic & Photography</span>
-            <img src ="3rd Tourist Attraction.jpg">
-            <span>"3rd Tourist Attraction"</span>
+            <span class="card-badge">Scenic &amp; Photography</span>
+            <img src="3rd Tourist Attraction.jpg" alt="Baluyan Peak">
           </div>
           <div class="card-body">
             <div class="card-title">Baluyan Peak</div>
-            <p class="card-desc">Baluyan Peak is a scenic highland viewpoint famous for its breathtaking 360-degree sunset vistas and frequent morning "sea of clouds." It offers a moderate trekking experience through ancestral Subanen lands, making it a favorite spot for "back-to-basics" camping and nature photography.</p>
+            <p class="card-desc">A scenic highland viewpoint famous for its breathtaking 360-degree sunset vistas and frequent morning "sea of clouds." It offers a moderate trekking experience through ancestral Subanen lands, making it a favorite spot for back-to-basics camping and nature photography.</p>
           </div>
         </div>
 
@@ -946,66 +948,64 @@
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 4 — CULTURE
-  ================================================ -->
+  <!-- ============================================================
+       CULTURE
+  ============================================================ -->
   <section id="culture">
     <div class="container">
       <div class="culture-grid">
 
         <div>
-          <p class="sec-tag">Heritage &amp; Tradition</p>
+          <p class="eyebrow">Heritage &amp; Tradition</p>
           <h2 class="sec-title">Culture &amp; <em>Traditions</em></h2>
-          <div class="divider"></div>
-
-          <!-- 💡 EDIT: Cultural overview -->
+          <div class="rule"></div>
           <p class="sec-body">
-            [Write about the cultural heritage of Imelda — local traditions, festivals, the people's way of life.]
+            Imelda's cultural life is a vibrant tapestry woven from rural Filipino traditions, faith-rooted practices, and a growing spirit of civic pride — expressed most vividly through its festivals, homegrown food, and the warm hospitality of its people.
           </p>
 
-          <!-- 💡 EDIT: Replace each item's emoji, title, and description -->
-          <ul class="culture-list">
+          <ul class="culture-items">
             <li>
-              <div class="culture-icon">🎉</div>
+              <div class="c-icon">🎉</div>
               <div>
-                <div class="culture-item-title">Imeldahan, Bahandianon, and Lechon Festivals</div>
-                <div class="culture-item-desc">Imelda, Zamboanga Sibugay celebrates several key festivals that blend local identity, food culture, and community spirit. The Bahandianon Festival and the Lechon Festival were held in 2024, highlighting the town’s agricultural roots and love for festive food with street dancing, traditional‑themed activities, and roasted‑pig displays that drew both residents and visitors. Under the current administration, the town continues to promote cultural celebration through the Imeldahan Festival, an annual founding‑day event that unites barangays in one spirit of town pride, featuring street dances, local showcases, and activities that reflect Imelda’s rural charm and evolving civic identity.</div>
+                <div class="c-title">Imeldahan, Bahandianon &amp; Lechon Festivals</div>
+                <div class="c-desc">Imelda celebrates key festivals blending local identity, food culture, and community spirit. The Bahandianon and Lechon Festivals were held in 2024, highlighting agricultural roots and love for festive food with street dancing and traditional activities. The Imeldahan Festival unites barangays in town pride annually.</div>
               </div>
             </li>
             <li>
-              <div class="culture-icon">🍽️</div>
+              <div class="c-icon">🍽️</div>
               <div>
-                <div class="culture-item-title">Home‑style Filipino Food</div>
-                <div class="culture-item-desc">Imelda, Zamboanga Sibugay’s food culture centers on simple, hearty, and affordable Filipino comfort fare, with residents and travelers alike enjoying rice meals paired with fried or grilled fish and chicken from roadside eateries and carinderias along the national highway and in barangays like Poblacion and Balugo; the town is also known for its many bakeshops and snack houses offering soft breads, pastries, and inexpensive baon-style treats, as well as balut stalls and a locally cherished herbal turmeric‑based drink made from wild turmeric and sugar that is valued as a tonic and everyday wellness beverage.</div>
+                <div class="c-title">Home‑style Filipino Food</div>
+                <div class="c-desc">Imelda's food culture centers on hearty Filipino comfort fare — rice meals with grilled fish and chicken from roadside eateries, bakeshops, balut stalls, and a cherished herbal turmeric-based wellness drink made from wild turmeric and sugar.</div>
               </div>
             </li>
             <li>
-              <div class="culture-icon">🎭</div>
+              <div class="c-icon">🎭</div>
               <div>
-                <div class="culture-item-title">Homegrown Creations</div>
-                <div class="culture-item-desc">Imelda’s local art, crafts, and music are defined by simple, homegrown expressions that reflect everyday life in the town. Art and crafts are mostly practical—rattan and wood furniture, native hats, baskets, and mirrors made by local hands and sold in roadside shops and small stalls along the highway. Music in Imelda is informal and lively, often heard in roadside restaurants, fiestas, and barangay gatherings, where cover songs, folk tunes, and school‑style drum‑and‑lyre performances create a relaxed, community‑centered soundscape rather than a distinct town‑specific genre.</div>
+                <div class="c-title">Homegrown Creations</div>
+                <div class="c-desc">Local art is practical and spirited — rattan and wood furniture, native hats, baskets, and decorative mirrors sold in roadside shops. Music fills fiestas and barangay gatherings with cover songs, folk tunes, and drum-and-lyre school performances.</div>
               </div>
             </li>
             <li>
-              <div class="culture-icon">🏛️</div>
+              <div class="c-icon">🏛️</div>
               <div>
-                <div class="culture-item-title">Faith‑Rooted Traditions</div>
-                <div class="culture-item-desc">Imelda’s cultural practices and beliefs are anchored in a mix of Catholic and rural Filipino traditions, with strong emphasis on family, fiesta‑season devotion, and community‑based farming customs. Daily life is shaped by respect for elders, church‑centered observances such as Holy Week and patron‑saint fiestas, and informal but deep‑seated values around hospitality, hard work, and neighbor‑helping‑neighbor.</div>
+                <div class="c-title">Faith‑Rooted Traditions</div>
+                <div class="c-desc">Cultural practices are anchored in Catholic and rural Filipino traditions — respect for elders, Holy Week observances, patron-saint fiestas, and deep-seated values around hospitality, hard work, and neighbor-helping-neighbor.</div>
               </div>
             </li>
           </ul>
         </div>
 
-        <!-- 💡 PHOTOS: Replace .cimg divs with <img src="photo.jpg"> -->
-        <div class="culture-img-stack">
+        <div class="cimg-stack">
           <div class="cimg cimg-1">
-            <div class="cimg-placeholder"><img src ="Bahandianon Festival.jpg"></div>
+            <img src="Bahandianon Festival.jpg" alt="Bahandianon Festival"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="cimg-ph" style="display:none;">Bahandianon Festival</div>
           </div>
           <div class="cimg cimg-2">
-            <div class="cimg-placeholder"><img src ="Lechon Festival.jpg"></div>
+            <img src="Lechon Festival.jpg" alt="Lechon Festival"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="cimg-ph" style="display:none;">Lechon Festival</div>
           </div>
         </div>
 
@@ -1013,172 +1013,205 @@
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 5 — ECONOMY
-  ================================================ -->
+  <!-- ============================================================
+       ECONOMY
+  ============================================================ -->
   <section id="economy">
     <div class="container">
       <div style="text-align:center;">
-        <p class="sec-tag" style="justify-content:center;">Livelihood &amp; Industry</p>
+        <p class="eyebrow" style="justify-content:center;">Livelihood &amp; Industry</p>
         <h2 class="sec-title">Local <em>Economy</em></h2>
-        <div class="divider" style="margin:1rem auto 1.5rem;"></div>
-        <!-- 💡 EDIT: Economy overview -->
-        <p class="sec-body" style="margin:0 auto; text-align:center;">
-Economic activities in Imelda, Zamboanga Sibugay are primarily anchored on agriculture, small‑scale food production, and local trade, which together sustain most households in the community. The town’s economy relies heavily on farming—rice, corn, fruits, and vegetables—along with fishing in nearby coastal areas, providing staple livelihoods for many families. Alongside these, residents engage in cottage industries such as balut (incubated‑egg) making, rattan and wood furniture, native hats, baskets, and decorative mirrors, which are sold in roadside stalls and small shops lining the national highway. Commerce is further supported by neighborhood eateries, bakeshops, sari‑sari stores, and transport services, forming a diversified but largely rural‑based economy that keeps Imelda’s community self‑sufficient and closely tied to everyday trade and homegrown enterprises.
+        <div class="rule" style="margin:1rem auto 1.5rem;"></div>
+        <p class="sec-body" style="margin:0 auto; text-align:center; max-width:680px;">
+          Economic activities in Imelda are primarily anchored on agriculture, small-scale food production, and local trade. The town's economy relies heavily on farming — rice, corn, fruits, and vegetables — along with fishing, cottage industries, and roadside commerce that keep the community self-sufficient and closely tied to everyday trade and homegrown enterprises.
         </p>
       </div>
 
-      <!-- 💡 EDIT: Replace each card's emoji, title, and description -->
-      <div class="economy-grid">
+      <div class="econ-grid">
         <div class="econ-card">
           <div class="econ-icon">🌾</div>
           <div class="econ-title">Agriculture</div>
-          <p class="econ-desc">Agriculture is the primary industry in Imelda, Zamboanga Sibugay, with most families depending on rice, corn, fruits, and vegetables grown on lowland and upland farms that supply both local consumption and nearby markets.</p>
+          <p class="econ-desc">The primary industry — most families depend on rice, corn, fruits, and vegetables grown on lowland and upland farms supplying both local consumption and nearby markets.</p>
         </div>
         <div class="econ-card">
           <div class="econ-icon">🐟</div>
-          <div class="econ-title"> Fishing and Aquaculture]</div>
-          <p class="econ-desc">Fishing and small‑scale aquaculture sustain coastal and riverside barangays, where residents harvest fish and other marine or freshwater products that support household food security and small‑scale trade in the town.</p>
+          <div class="econ-title">Fishing &amp; Aquaculture</div>
+          <p class="econ-desc">Coastal and riverside barangays harvest fish and freshwater products that support household food security and small-scale trade throughout the town.</p>
         </div>
         <div class="econ-card">
           <div class="econ-icon">🌿</div>
-          <div class="econ-title">Food and Craft Manufacturing</div>
-          <p class="econ-desc">Food and craft manufacturing form a key local industry, including balut production, bakeshops, roadside eateries, and the making of rattan and wood furniture, native hats, baskets, and decorative items that are sold in shops and along the national highway.</p>
+          <div class="econ-title">Food &amp; Craft Manufacturing</div>
+          <p class="econ-desc">Balut production, bakeshops, rattan and wood furniture, native hats, baskets, and decorative items sold in shops and along the national highway.</p>
         </div>
         <div class="econ-card">
           <div class="econ-icon">🏪</div>
-          <div class="econ-title">Trade and Retail Services</div>
-          <p class="econ-desc">Trade and retail services round out Imelda’s main industries, with sari‑sari stores, roadside stalls, transport services, and small eateries supporting daily commerce and providing livelihoods for many households while linking the town’s agricultural, fishing, and craft sectors to local customers and passing travelers.</p>
+          <div class="econ-title">Trade &amp; Retail Services</div>
+          <p class="econ-desc">Sari-sari stores, roadside stalls, transport services, and eateries support daily commerce and link agricultural, fishing, and craft sectors to local customers.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 6 — GOVERNMENT
-  ================================================ -->
+  <!-- ============================================================
+       GOVERNMENT
+  ============================================================ -->
   <section id="government">
     <div class="container">
       <div class="gov-grid">
 
-        <!-- LEFT: Officials -->
         <div>
-          <p class="sec-tag">Local Government Unit</p>
+          <p class="eyebrow">Local Government Unit</p>
           <h2 class="sec-title">Municipal <em>Officials</em></h2>
-          <div class="divider"></div>
-
-          <!-- 💡 EDIT: LGU description -->
-          <p class="sec-body">The Local Government Unit of Imelda is dedicated to fostering a vibrant, self-reliant, and agro-industrialized community under the principles of transparent and participatory governance. Our mission is to provide a balanced environment where economic competitiveness meets ecological sustainability, ensuring every citizen thrives in a peaceful and healthy municipality. To achieve this, we implement comprehensive programs such as Project LAWA at BINHI for agricultural resilience, the installation of solar-powered infrastructure for public safety, and the expansion of the Imelda District Hospital to provide quality healthcare for all. We are committed to making government more accessible through digitized services like our Electronic Business Permits and Licensing System (eBPLS) and the continuous development of Level II Water Systems to reach every barangay.
+          <div class="rule"></div>
+          <p class="sec-body">
+            The LGU of Imelda is dedicated to fostering a vibrant, self-reliant, and agro-industrialized community under transparent and participatory governance. Key programs include Project LAWA at BINHI for agricultural resilience, solar-powered infrastructure, expansion of Imelda District Hospital, digitized eBPLS services, and Level II Water Systems for every barangay.
           </p>
 
-          <!-- 💡 EDIT: Replace names and positions. Copy .official-card to add more. -->
-          <div class="officials-list">
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Mayor.jpg"></div>
-              <div>
-                <div class="official-name">Arnoldo L. Famor</div>
-                <div class="official-pos">Municipal Mayor</div>
+          <div class="officials-scroll">
+            <div class="officials-list">
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Mayor.jpg" alt="Mayor Famor"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Arnoldo L. Famor</div>
+                  <div class="off-pos">Municipal Mayor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Vice Mayor.jpg"></div>
-              <div>
-                <div class="official-name">Frederico B. Gonzales</div>
-                <div class="official-pos">Municipal Vice Mayor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Vice Mayor.jpg" alt="Vice Mayor Gonzales"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Frederico B. Gonzales</div>
+                  <div class="off-pos">Municipal Vice Mayor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Escamillan.jpg"></div>
-              <div>
-                <div class="official-name">Allan B. Escamillan</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Escamillan.jpg" alt="Councilor Escamillan"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Allan B. Escamillan</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Basinang.jpg"></div>
-              <div>
-                <div class="official-name">Renato P. Basinang</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Basinang.jpg" alt="Councilor Basinang"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Renato P. Basinang</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Bajada.jpg"></div>
-              <div>
-                <div class="official-name">Rizalinus C. Bajada</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Bajada.jpg" alt="Councilor Bajada"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Rizalinus C. Bajada</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Datoy.jpg"></div>
-              <div>
-                <div class="official-name">Alex O. Datoy</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Datoy.jpg" alt="Councilor Datoy"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Alex O. Datoy</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Claros.jpg"></div>
-              <div>
-                <div class="official-name">Ruby J. Claros</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Claros.jpg" alt="Councilor Claros"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Ruby J. Claros</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Calamohoy.jpg"></div>
-              <div>
-                <div class="official-name">Francisco C. Calomohoy Jr.</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Calamohoy.jpg" alt="Councilor Calomohoy"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Francisco C. Calomohoy Jr.</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Badlis.jpg"></div>
-              <div>
-                <div class="official-name">Marlo V. Badlis</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Badlis.jpg" alt="Councilor Badlis"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Marlo V. Badlis</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
-            </div>
-            <div class="official-card">
-              <div class="official-avatar"><img src ="Hon. Insigne.jpg"></div>
-              <div>
-                <div class="official-name">Romeo R. Insigne</div>
-                <div class="official-pos">Councilor</div>
+
+              <div class="official-card">
+                <div class="off-avatar">
+                  <img src="Hon. Insigne.jpg" alt="Councilor Insigne"
+                       onerror="this.parentElement.innerHTML='Photo';">
+                </div>
+                <div>
+                  <div class="off-name">Romeo R. Insigne</div>
+                  <div class="off-pos">Councilor</div>
+                </div>
               </div>
+
             </div>
           </div>
+        </div>
 
-        <!-- RIGHT: Contact info -->
         <div>
-          <p class="sec-tag">Reach the LGU</p>
+          <p class="eyebrow">Reach the LGU</p>
           <h2 class="sec-title">Municipal <em>Hall</em></h2>
-          <div class="divider"></div>
+          <div class="rule"></div>
 
-          <!-- 💡 EDIT: Replace all contact details -->
-          <div class="contact-info">
+          <div class="contact-panel">
             <h3>Municipal Government of Imelda</h3>
-            <div class="contact-row">
+            <div class="c-row">
               <span>📍</span>
               <span>Sta. Barbara, Imelda, Zamboanga Sibugay</span>
             </div>
-            <div class="contact-row">
+            <div class="c-row">
               <span>📞</span>
               <span>09755826362</span>
             </div>
-            <div class="contact-row">
+            <div class="c-row">
               <span>📧</span>
               <span>lguimeldazsp@gmail.com</span>
             </div>
-            <div class="contact-row">
+            <div class="c-row">
               <span>🌐</span>
               <span>facebook.com/lgu.imelda.5</span>
             </div>
-            <div class="contact-row">
+            <div class="c-row">
               <span>🕐</span>
-              <span>Mon-Fri, 8:00AM-5:00PM</span>
+              <span>Mon – Fri, 8:00 AM – 5:00 PM</span>
             </div>
           </div>
         </div>
@@ -1187,89 +1220,87 @@ Economic activities in Imelda, Zamboanga Sibugay are primarily anchored on agric
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
+  <!-- ============================================================
        GALLERY
-  ================================================ -->
+  ============================================================ -->
   <section id="gallery">
     <div class="container">
       <div style="text-align:center;">
-        <p class="sec-tag" style="justify-content:center;">Photo Gallery</p>
+        <p class="eyebrow">Photo Gallery</p>
         <h2 class="sec-title">Scenes of <em>Imelda</em></h2>
-        <div class="divider" style="margin:1rem auto 2rem;"></div>
+        <div class="rule" style="margin:1rem auto 2rem;"></div>
       </div>
 
-      <!-- 💡 PHOTOS: Add <img src="your-photo.jpg"> inside each gallery-item div -->
       <div class="gallery-grid">
-        <div class="gallery-item wide tall">
-          <div class="gallery-placeholder"><img src="Scene 5.jpg"><br>Wide + Tall</div>
+        <div class="g-item wide tall">
+          <img src="Scene 5.jpg" alt="Imelda Scene 5"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Main Featured Photo</div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder"><img src="Scene 4.jpg"></div>
+        <div class="g-item">
+          <img src="Scene 4.jpg" alt="Imelda Scene 4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Scene 4</div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder"><img src="Scene 3.jpg"></div>
+        <div class="g-item">
+          <img src="Scene 3.jpg" alt="Imelda Scene 3"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Scene 3</div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder"><img src="Scenery 1.jpg"</div>
+        <div class="g-item">
+          <img src="Scenery 1.jpg" alt="Imelda Scenery 1"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Scenery 1</div>
         </div>
-        <div class="gallery-item">
-          <div class="gallery-placeholder"><img src="Scene 2.jpg"></div>
+        <div class="g-item">
+          <img src="Scene 2.jpg" alt="Imelda Scene 2"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Scene 2</div>
         </div>
-        <div class="gallery-item wide">
-          <div class="gallery-placeholder"><img src="Scene 6.jpg"></div>
+        <div class="g-item wide">
+          <img src="Scene 6.jpg" alt="Imelda Scene 6"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="g-ph" style="display:none;">Scene 6 Wide</div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="accent-line"></div>
 
-
-  <!-- ================================================
-       SECTION 7 — CONTACT
-  ================================================ -->
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
   <section id="contact">
-    <div class="container" style="position:relative; z-index:1;">
-      <p class="sec-tag" style="justify-content:center;">Get in Touch</p>
+    <div class="container" style="position:relative;z-index:1;">
+      <p class="eyebrow">Get in Touch</p>
       <h2 class="sec-title">Contact <em>Us</em></h2>
-      <div class="divider" style="margin:1rem auto 1.5rem;"></div>
+      <div class="rule"></div>
 
-      <!-- 💡 EDIT: Replace contact values -->
       <div class="contact-cards">
-        <div class="contact-card">
-          <div class="contact-card-icon">📍</div>
-          <div class="contact-card-title">Our Location</div>
-          <div class="contact-card-val">
-           Sta. Barbara<br>
-            Imelda, Zamboanga Sibugay
-          </div>
+        <div class="con-card">
+          <div class="con-icon">📍</div>
+          <div class="con-title">Our Location</div>
+          <div class="con-val">Sta. Barbara<br>Imelda, Zamboanga Sibugay</div>
         </div>
-        <div class="contact-card">
-          <div class="contact-card-icon">📞</div>
-          <div class="contact-card-title">Phone</div>
-          <div class="contact-card-val">
-           09755826362
-          </div>
+        <div class="con-card">
+          <div class="con-icon">📞</div>
+          <div class="con-title">Phone</div>
+          <div class="con-val">09755826362</div>
         </div>
-        <div class="contact-card">
-          <div class="contact-card-icon">📧</div>
-          <div class="contact-card-title">Email &amp; Social</div>
-          <div class="contact-card-val">
-            lguimeldazsp@gmail.com<br>
-           facebook.com/lgu.imelda.5
-          </div>
+        <div class="con-card">
+          <div class="con-icon">📧</div>
+          <div class="con-title">Email &amp; Social</div>
+          <div class="con-val">lguimeldazsp@gmail.com<br>facebook.com/lgu.imelda.5</div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ================================================
+  <!-- ============================================================
        FOOTER
-  ================================================ -->
+  ============================================================ -->
   <footer>
     <p><strong>MUNICIPALITY OF IMELDA</strong> &nbsp;·&nbsp; ZAMBOANGA SIBUGAY, PHILIPPINES</p>
     <p style="margin-top:0.3rem;">
@@ -1278,9 +1309,9 @@ Economic activities in Imelda, Zamboanga Sibugay are primarily anchored on agric
   </footer>
 
 
-  <!-- ================================================
+  <!-- ============================================================
        JAVASCRIPT
-  ================================================ -->
+  ============================================================ -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -1305,7 +1336,9 @@ Economic activities in Imelda, Zamboanga Sibugay are primarily anchored on agric
 
     window.addEventListener('scroll', () => {
       document.querySelector('nav').style.borderBottomColor =
-        window.scrollY > 20 ? 'rgba(224,28,28,0.5)' : 'rgba(224,28,28,0.3)';
+        window.scrollY > 30
+          ? 'rgba(212,160,32,0.45)'
+          : 'rgba(212,160,32,0.25)';
     });
   </script>
 
